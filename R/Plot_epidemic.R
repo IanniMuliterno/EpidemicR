@@ -23,7 +23,7 @@
 #'    rate_mat <- Beta_mat_form(distance_mat, c(0.004, 0.002), 10)
 #'    
 #' # Generate a simulated epidemic
-#'    Hetero_sim <- HeteroGSEsim(N = 100, beta.mat = rate_mat, gamma = 0.15)
+#'    Hetero_sim <- GSE_sim(N = 100, beta.mat = rate_mat, gamma = 0.15)
 #'    
 #' # Plot the epidemic
 #'    Plot_epidemic(xy.coords, Hetero_sim, init.inf = c(1))
