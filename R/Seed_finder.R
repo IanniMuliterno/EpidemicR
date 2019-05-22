@@ -4,6 +4,7 @@
 #'  as well as a histogram of all final sizes.
 #'
 #' @param model Takes values "Unif", "Clust", "Edge", "Latt", "Lines", or "Trials", corresponding to the appropriate distance matrix function.
+#' @param N The population size.
 #' @param ... The parameters of the specifief distance matrix function (see example).
 #' @param betas A vector of infection rates, used for the Beta_mat_form function.
 #' @param ds A vector of distances at which the infection rate changes, used for the Beta_mat_form function.
@@ -22,7 +23,7 @@
 #'             betas = c(0.1, 0.001), ds = 0.25, 
 #'             size = 25, error = 2, seeds = 250)
 
-Seed_finder <- function(model, ..., betas, ds, size, error, seeds){
+Seed_finder <- function(model, N, ..., betas, ds, size, error, seeds){
   
   if(model == "Unif"){
     distfunc <- Dist_mat_unif
@@ -50,13 +51,13 @@ Seed_finder <- function(model, ..., betas, ds, size, error, seeds){
     set.seed(k)
     
     # Generate a distance matrix
-    distance_mat <- distfunc(...)[[2]]
+    distance_mat <- distfunc(N, ...)[[2]]
     
     # Generate an associated infection rate rate matrix
     rate_mat <- Beta_mat_form(distance_mat, betas, ds)
     
     # Generate a simulated epidemic
-    Hetero_sim <- GSE_sim(N = 100, beta.mat = rate_mat, gamma = 0.15)
+    Hetero_sim <- GSE_sim(N, beta.mat = rate_mat, gamma = 0.15)
     
     # Total number of infected
     final.size[k] <- sum(Hetero_sim[,3] != Inf)
