@@ -16,8 +16,8 @@
 #'   The second object is an NxN distance matrix.
 #'
 #' @examples
-#' xy.coords <- Dist_mat_edge(N=100, xlim = 20, ylim = 20, clusters = 8)[[1]]
-#' distance_mat <- Dist_mat_edge(N=100, xlim = 20, ylim = 20, clusters = 8)[[2]]
+#' xy.coords <- Dist_mat_edge(N=100, xlim = 20, ylim = 20, clusters = 10)[[1]]
+#' distance_mat <- Dist_mat_edge(N=100, xlim = 20, ylim = 20, clusters = 10)[[2]]
 #' plot(xy.coords[,1], xy.coords[,2], type  = "p")
 #' 
 
